@@ -1,3 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+    background-color: #E9F8F9;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Alkatra', cursive;
+}
+.text-p {
+    color: #1B9C85;
+}
+.bg-p {
+    background-color: #1B9C85;
+}
+.text-s {
+    color: #393E46;
+}
+.bg-s {
+    background-color: #06283D;
+}
