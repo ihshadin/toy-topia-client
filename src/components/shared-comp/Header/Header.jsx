@@ -73,7 +73,7 @@ const Header = () => {
         //         </div>
         //     </div>
         // </header>
-        <div>
+        <div className='py-5 mx-auto'>
             <Link to='/' >Home</Link>
             <Link to='/login'>Login</Link>
             <Link to='/register' >Signup</Link>
