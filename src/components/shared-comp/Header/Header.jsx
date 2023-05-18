@@ -5,9 +5,17 @@ import { AuthContext } from '../../../routes/AuthProvider';
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
 
+    // LogOut
+    const handleLogOut = () => {
+        logOut()
+            .then(result => { })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
 
     // Logo Area for navbar
     const logoArea = <>
@@ -15,17 +23,17 @@ const Header = () => {
     </>
     // Nav Menu Items 
     const navItems = <>
-        <NavLink to='/' className={({ isActive }) => isActive ? "text-[#ffa200]" : "" + `hover:text-[#ffa200]`}>Home</NavLink>
-        <NavLink to='/blog' className={({ isActive }) => isActive ? "text-[#ffa200]" : "" + `hover:text-[#ffa200]`}>Blog</NavLink>
+        <NavLink to='/' className={({ isActive }) => isActive ? "text-p" : "" + `hover:text-[#1B9C85]`}>Home</NavLink>
+        <NavLink to='/blog' className={({ isActive }) => isActive ? "text-p" : "" + `hover:text-[#1B9C85]`}>Blog</NavLink>
         {
             user ? <img className='w-8 h-8 object-cover rounded-full cursor-pointer' title={user.displayName} src={user.photoURL || 'https://media.licdn.com/dms/image/C5603AQEyNKnirxXA5w/profile-displayphoto-shrink_800_800/0/1632428106559?e=2147483647&v=beta&t=C2zGNkOkQTs6_ZkL3Sq22-KELUUGw9N9FlLSObMPfos'} alt="" />
                 : <>
-                    <NavLink to='/login' className={({ isActive }) => isActive ? "text-[#ffa200]" : "" + `hover:text-[#ffa200]`}>Login</NavLink>
-                    <NavLink to='/register' className={({ isActive }) => isActive ? "text-[#ffa200]" : "" + `hover:text-[#ffa200]`}>Register</NavLink>
+                    <NavLink to='/login' className={({ isActive }) => isActive ? "text-p" : "" + `hover:text-[#1B9C85]`}>Login</NavLink>
+                    <NavLink to='/register' className={({ isActive }) => isActive ? "text-p" : "" + `hover:text-[#1b9c85]`}>Register</NavLink>
                 </>
         }
         {
-            user && <span>Logout</span>
+            user && <span className='cursor-pointer hover:text-[#1B9C85]' onClick={handleLogOut}>Logout</span>
         }
     </>
     return (
@@ -44,7 +52,7 @@ const Header = () => {
                         title='Open Menu'
                         onClick={() => setMenuOpen(true)}
                     >
-                        <TfiAlignRight className='w-5 text-gray-600' />
+                        <TfiAlignRight className='w-5 text-p' />
                     </button>
                     {menuOpen && (
                         <div className='absolute top-3 w-full start-1/2 -translate-x-1/2 z-10 shadow-2xl'>
@@ -61,7 +69,7 @@ const Header = () => {
                                             title='Close Menu'
                                             onClick={() => setMenuOpen(false)}
                                         >
-                                            <TfiClose className='w-5 text-gray-600' />
+                                            <TfiClose className='w-5 text-p' />
                                         </button>
                                     </div>
                                 </div>
