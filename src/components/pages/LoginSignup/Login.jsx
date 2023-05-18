@@ -1,33 +1,36 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
 import loginImage from '../../../assets/images/login.png';
+import { AuthContext } from '../../../routes/AuthProvider';
 
 const Login = () => {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+    const { signIn } = useContext(AuthContext);
 
-    // const handleLogin = event => {
-    //     event.preventDefault();
-    //     setSuccess('');
-    //     setError('')
+    // Sign in with email and password
+    const handleLogin = event => {
+        event.preventDefault();
+        setSuccess('');
+        setError('')
 
-    //     const form = event.target;
-    //     const email = form.login_email.value;
-    //     const password = form.login_password.value;
+        const form = event.target;
+        const email = form.login_email.value;
+        const password = form.login_password.value;
 
-    //     signIn(email, password)
-    //         .then(result => {
-    //             const loggedUser = result.user;
-    //             console.log(loggedUser);
-    //             setSuccess('You are successfully loggedin');
-    //             redirectNavigate();
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //             setError("Email or password doesn't match.")
-    //         })
-    // }
+        signIn(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                setSuccess('You are successfully loggedin');
+                // redirectNavigate();
+            })
+            .catch(error => {
+                console.log(error);
+                setError("Email or password doesn't match.")
+            })
+    }
     // const redirectNavigate = () => {
     //     navigate(from, { replace: true })
     // }
@@ -37,7 +40,7 @@ const Login = () => {
             <div>
                 <img className='max-w-full' src={loginImage} alt="" />
             </div>
-            <form className='my-12 py-12 px-16 w-11/12 md:max-w-lg rounded-lg shadow-2xl'>
+            <form onSubmit={handleLogin} className='my-12 py-12 px-16 w-11/12 md:max-w-lg rounded-lg hover:shadow-2xl'>
                 <h4 className='text-xl md:text-2xl font-semibold text-center mb-5'>Please Sign in your Account</h4>
                 <div className='mb-3'>
                     <label htmlFor="login_email" className='block font-medium mb-1'>Email Address</label>
@@ -54,7 +57,7 @@ const Login = () => {
                 <div className="flex flex-col w-full">
                     <div className="divider"> OR </div>
                 </div>
-                <SocialLogin />
+                <SocialLogin setError={setError} setSuccess={setSuccess} />
             </form>
         </div>
     );

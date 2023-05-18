@@ -1,17 +1,65 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import SocialLogin from './SocialLogin';
 import signUpImage from '../../../assets/images/register.png'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../routes/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Signup = () => {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+    const { user, createUser } = useContext(AuthContext);
+
+    const handleRegister = (event) => {
+        event.preventDefault();
+        setError('');
+        setSuccess('')
+
+        const form = event.target;
+        const name = form.reg_name.value;
+        const email = form.reg_email.value;
+        const password = form.reg_pass.value;
+        const photoLink = form.reg_photo.value;
+
+        if (!/(?=.*[A-Z])/.test(password)) {
+            setError('Please input at least one uppper latter');
+            return;
+        } else if (password.length < 6) {
+            setError('Password should be at least 6 characters')
+            return;
+        }
+
+        createUser(email, password)
+            .then(result => {
+                const createdUser = result.user;
+                console.log(createdUser);
+                updateUserData(createdUser, name, photoLink)
+                setSuccess('Congrates! You are successfully register an Account!')
+            })
+            .catch(error => {
+                setError('Ops! Registration faild. Please try again')
+                console.log(error?.message)
+            })
+    }
+
+    const updateUserData = (loggedUser, userName, photo) => {
+        updateProfile(loggedUser, {
+            displayName: userName,
+            photoURL: photo,
+        })
+            .then(() => {
+                console.log('user name updated');
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+    }
     return (
         <div className='flex xl:container mx-auto justify-between items-center'>
             <div>
                 <img className='max-w-full' src={signUpImage} alt="" />
             </div>
-            <form className='my-12 py-12 px-16 w-11/12 md:max-w-lg rounded-lg hover:shadow-2xl'>
+            <form onSubmit={handleRegister} className='my-12 py-12 px-16 w-11/12 md:max-w-lg rounded-lg hover:shadow-2xl'>
                 <h4 className='text-xl md:text-2xl font-semibold text-center mb-5'>Please Register an Account</h4>
                 <div className='mb-3'>
                     <label htmlFor="reg_name" className='block font-medium mb-1'>Name</label>
