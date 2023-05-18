@@ -3,6 +3,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 body {
     background-color: #E9F8F9;
 }
@@ -19,8 +21,13 @@ body {
     background-color: #1B9C85;
 }
 .text-s {
-    color: #393E46;
+    color: #06283D;
 }
 .bg-s {
     background-color: #06283D;
+}
+.banner-toytopia {
+    background: linear-gradient(to right, rgba(6, 40, 61, 1), rgba(0, 0, 0, 0.5)), url('./assets/images/banner-bg.jpg');
+    background-position: center;
+    background-size: cover;
 }
