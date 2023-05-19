@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../routes/AuthProvider';
 
 const AddNewToy = () => {
+    const { user } = useContext(AuthContext);
 
     const handleAddToy = e => {
         e.preventDefault();
@@ -22,10 +24,11 @@ const AddNewToy = () => {
             toyRating,
             toyCategory,
             toyDesc,
+            userEmail: user?.email
         };
         console.log(newToy);
 
-        fetch('https://toy-topia-server-theta.vercel.app/add-toy', {
+        fetch('https://toy-topia-server-ihshadin.vercel.app/add-toy', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -51,7 +51,7 @@ const Testimonial = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 items-center'>
             <div>
                 <h4 className='text-2xl md:text-3xl text-p'>Our Happy</h4>
-                <h2 className='text-5xl md:text-8xl font-bold mb-4 text-s'>Customers</h2>
+                <h2 className='text-5xl md:text-7xl font-bold mb-4 text-s'>Customers</h2>
                 <div className='flex items-center gap-3'>
                     <div onClick={slidePrev} className='cursor-pointer border border-teal-600 text-p px-10 py-3 rounded-full font-bold uppercase text-l flex items-center gap-2' >
                         <span><BsArrowLeft /></span> <span>prev</span>

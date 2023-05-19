@@ -5,6 +5,7 @@ import banner3 from '../../../assets/images/banner3.jpg'
 import Gallery from '../../shared-comp/Gallery/Gallery';
 import Testimonial from '../../shared-comp/Testimonial/Testimonial';
 import Contact from '../../shared-comp/Contact/Contact';
+import CategoriesToy from '../../shared-comp/CategoriesToy/CategoriesToy';
 
 const Home = () => {
     return (
@@ -41,7 +42,7 @@ const Home = () => {
                         Discover a diverse range of toys in various categories. From educational toys to outdoor games, action figures to dolls, we have something for every child. Explore our categories and find the perfect toy to inspire imagination and create lasting memories.
                     </p>
                 </div>
-                <Testimonial />
+                <CategoriesToy />
             </section>
             {/* testimonial section */}
             <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
