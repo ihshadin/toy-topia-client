@@ -50,8 +50,8 @@ const Testimonial = () => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 items-center'>
             <div>
-                <h4 className='text-3xl text-p'>Our Happy</h4>
-                <h2 className='text-8xl font-bold mb-4 text-s'>Customers</h2>
+                <h4 className='text-2xl md:text-3xl text-p'>Our Happy</h4>
+                <h2 className='text-5xl md:text-8xl font-bold mb-4 text-s'>Customers</h2>
                 <div className='flex items-center gap-3'>
                     <div onClick={slidePrev} className='cursor-pointer border border-teal-600 text-p px-10 py-3 rounded-full font-bold uppercase text-l flex items-center gap-2' >
                         <span><BsArrowLeft /></span> <span>prev</span>
@@ -61,14 +61,14 @@ const Testimonial = () => {
                     </div>
                 </div>
             </div>
-            <div className='overflow-hidden relative min-h-[225px]'>
+            <div className='overflow-hidden mt-5 md:mt-0 relative h-[400px] md:min-h-[225px]'>
                 {
                     testimonials.map((testimonial, index) => (
                         <div
                             key={index}
-                            className={`flex gap-5 items-center p-6 bg-white rounded-2xl duration-300 w-full absolute top-1/2 left-0 transform -translate-y-1/2 ${index === currentSlide ? 'opacity-100' : 'opacity-0 left-full'}`}
+                            className={`md:flex gap-5 items-center p-6 bg-white rounded-2xl duration-300 w-full absolute top-1/2 left-0 transform -translate-y-1/2 ${index === currentSlide ? 'opacity-100' : 'opacity-0 left-full'}`}
                         >
-                            <img className='w-36 h-44 flex-shrink-0 object-cover rounded-xl' src={testimonial?.photo} alt="" />
+                            <img className='mb-5 md:mb-0 w-36 h-44 flex-shrink-0 object-cover rounded-xl' src={testimonial?.photo} alt="" />
                             <div>
                                 <p className='text-gray-500'>{testimonial.content}</p>
                                 <h5 className='font-bold mt-3 text-p text-xl'>~ {testimonial.author}</h5>

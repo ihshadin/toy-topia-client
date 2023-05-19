@@ -26,12 +26,22 @@ const Home = () => {
             {/* Gallery Section */}
             <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
                 <div className='mb-10'>
-                    <h2 className='text-center text-2xl md:text-5xl font-bold'>Explore Our Gallery</h2>
+                    <h2 className='text-center text-3xl md:text-5xl font-bold'>Explore Our Gallery</h2>
                     <p className='w-full md:w-2/4 mt-2 text-center text-zinc-600 text-base mx-auto'>
                         Discover a wide variety of captivating images showcasing our diverse collection of toys. Immerse yourself in a world of fun and wonder.
                     </p>
                 </div>
                 <Gallery />
+            </section>
+            {/* Shop by category */}
+            <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
+                <div className='mb-12'>
+                    <h2 className='text-center text-3xl md:text-5xl font-bold'>Discover Toy Collections</h2>
+                    <p className='w-full md:w-2/4 mt-2 text-center text-zinc-600 text-base mx-auto'>
+                        Discover a diverse range of toys in various categories. From educational toys to outdoor games, action figures to dolls, we have something for every child. Explore our categories and find the perfect toy to inspire imagination and create lasting memories.
+                    </p>
+                </div>
+                <Testimonial />
             </section>
             {/* testimonial section */}
             <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
@@ -46,7 +56,7 @@ const Home = () => {
             {/* Contact Us Section */}
             <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
                 <div className='mb-12'>
-                    <h2 className='text-center text-2xl md:text-5xl font-bold'>Get in Touch</h2>
+                    <h2 className='text-center text-3xl md:text-5xl font-bold'>Get in Touch</h2>
                     <p className='w-full md:w-2/4 mt-2 text-center text-zinc-600 text-base mx-auto'>
                         Have any questions or feedback? We'd love to hear from you! Reach out to us through the contact form below or contact our friendly customer support team directly. We're here to assist you and provide the best toy shopping experience possible.
                     </p>

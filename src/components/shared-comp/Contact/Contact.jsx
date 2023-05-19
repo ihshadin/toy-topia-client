@@ -4,7 +4,7 @@ import contactImg from '../../../assets/images/contact-us.png'
 const Contact = () => {
     return (
         <div className='grid md:grid-cols-2 gap-20 items-center'>
-            <div>
+            <div className='order-2 md:order-1'>
                 <div className='grid md:grid-cols-2 gap-5'>
                     <div className='mb-3'>
                         <label htmlFor="name" className='block font-medium mb-1'>Your Name</label>
@@ -25,7 +25,7 @@ const Contact = () => {
                 </div>
                 <button className='block w-full py-3 bg-p mt-3 text-white font-semibold uppercase'>Send Message</button>
             </div>
-            <div>
+            <div className='order-1 md:order-1'>
                 <img className='w-full' src={contactImg} alt="" />
             </div>
         </div>

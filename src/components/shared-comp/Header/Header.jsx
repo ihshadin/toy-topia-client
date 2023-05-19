@@ -55,7 +55,7 @@ const Header = () => {
                 </div>
 
                 {/* Mobile Menu */}
-                <div className='lg:hidden'>
+                <div className='md:hidden'>
                     <button
                         title='Open Menu'
                         onClick={() => setMenuOpen(true)}
