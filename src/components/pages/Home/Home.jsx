@@ -3,6 +3,7 @@ import banner1 from '../../../assets/images/banner1.png'
 import banner2 from '../../../assets/images/banner2.png'
 import banner3 from '../../../assets/images/banner3.jpg'
 import Gallery from '../../shared-comp/Gallery/Gallery';
+import Testimonial from '../../shared-comp/Testimonial/Testimonial';
 
 const Home = () => {
     return (
@@ -30,6 +31,10 @@ const Home = () => {
                     </p>
                 </div>
                 <Gallery />
+            </section>
+            {/* testimonial section */}
+            <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
+                <Testimonial />
             </section>
         </>
     );
