@@ -25,7 +25,7 @@ const AddNewToy = () => {
         };
         console.log(newToy);
 
-        fetch('http://localhost:5000/add-toy', {
+        fetch('https://toy-topia-server-theta.vercel.app/add-toy', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -75,7 +75,7 @@ const AddNewToy = () => {
                 </div>
                 <div className='mb-6'>
                     <label htmlFor="toy_cat" className='block font-medium mb-2'>Subject</label>
-                    <select name="toy_cat" id="toy_cat" className='block w-full bg-teal-50 px-5 py-3 rounded-md' defaultValue='select-toy-category'>
+                    <select name="toy_cat" id="toy_cat" className='block w-full bg-teal-50 px-5 py-3 rounded-md' defaultValue='Select toy category'>
                         <option disabled value='Select toy category'>Select toy Category</option>
                         <option value="Goal Getter's Paradise">Goal Getter's Paradise</option>
                         <option value="Cricket Carnival">Cricket Carnival</option>
