@@ -65,6 +65,7 @@ const Testimonial = () => {
                 {
                     testimonials.map((testimonial, index) => (
                         <div
+                            key={index}
                             className={`flex gap-5 items-center p-6 bg-white rounded-2xl duration-300 w-full absolute top-1/2 left-0 transform -translate-y-1/2 ${index === currentSlide ? 'opacity-100' : 'opacity-0 left-full'}`}
                         >
                             <img className='w-36 h-44 flex-shrink-0 object-cover rounded-xl' src={testimonial?.photo} alt="" />
