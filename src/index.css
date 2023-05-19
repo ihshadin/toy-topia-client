@@ -31,3 +31,6 @@ body {
     background-position: center;
     background-size: cover;
 }
+.masonry-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
