@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../routes/AuthProvider';
+import useDynamicTitle from '../../../hooks/useDynamicTitle';
 
 const AddNewToy = () => {
+    useDynamicTitle();
     const { user } = useContext(AuthContext);
 
     const handleAddToy = e => {
@@ -48,6 +50,7 @@ const AddNewToy = () => {
                 }
             })
     }
+
     return (
         <section className='px-3 py-14 md:py-24 xl:px-0 max-w-6xl mx-auto'>
             <h2 className='text-center text-2xl md:text-5xl font-bold mb-7 md:mb-10'>Add New Toy</h2>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Testimonial = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -46,10 +48,16 @@ const Testimonial = () => {
             clearInterval(interval);
         };
     }, []);
+    useEffect(() => {
+        AOS.init({
+            offset: 150,
+            duration: 1500,
+        });
+    }, [])
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 items-center'>
-            <div>
+            <div data-aos="fade-right">
                 <h4 className='text-2xl md:text-3xl text-p'>Our Happy</h4>
                 <h2 className='text-5xl md:text-7xl font-bold mb-4 text-s'>Customers</h2>
                 <div className='flex items-center gap-3'>
@@ -61,7 +69,7 @@ const Testimonial = () => {
                     </div>
                 </div>
             </div>
-            <div className='overflow-hidden mt-5 md:mt-0 relative h-[400px] md:min-h-[225px]'>
+            <div className='overflow-hidden mt-5 md:mt-0 relative h-[400px] md:min-h-[225px]' data-aos="fade-left">
                 {
                     testimonials.map((testimonial, index) => (
                         <div

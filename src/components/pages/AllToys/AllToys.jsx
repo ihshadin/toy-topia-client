@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ToyCard from '../../shared-comp/ToyCard/ToyCard';
 import { Link, useLoaderData } from 'react-router-dom';
+import useDynamicTitle from '../../../hooks/useDynamicTitle';
 
 const AllToys = () => {
+    useDynamicTitle()
     const [toys, setToys] = useState([]);
     const [searchText, setSearchText] = useState("")
     const { totalToys } = useLoaderData();
@@ -25,6 +27,7 @@ const AllToys = () => {
             })
     }
 
+    // Pagination data
     useEffect(() => {
         fetch(`http://localhost:5000/all-toys?page=${currentPage}&limit=${itemsPerPage}`)
             .then(res => res.json())
@@ -49,11 +52,15 @@ const AllToys = () => {
                 </div>
                 <button onClick={handleSearch} className='block w-full md:w-auto mx-auto px-12 py-3 bg-p mt-3 text-white font-semibold uppercase'>Search Toy</button>
             </div>
+
+            {/* Card design All Toys */}
             {/* <div className='grid md:grid-cols-3 gap-6'>
                 {
                     toys.map(toy => <ToyCard toy={toy} key={toy._id} />)
                 }
             </div> */}
+
+            {/* Tabular design all Toys */}
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     {/* head */}
@@ -87,6 +94,7 @@ const AllToys = () => {
                     </tbody>
                 </table>
             </div>
+
             {/* Pagination */}
             <div className='flex gap-2 mt-10 justify-center flex-wrap'>
                 {

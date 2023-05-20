@@ -1,7 +1,9 @@
 import { Result } from 'postcss';
 import React, { useEffect, useState } from 'react';
+import useDynamicTitle from '../../../hooks/useDynamicTitle';
 
 const EditToy = ({ toy, handleUpdateToy }) => {
+    useDynamicTitle()
     // const [toy, setToy] = useState([])
     const {
         _id,

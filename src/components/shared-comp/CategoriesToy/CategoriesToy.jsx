@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../routes/AuthProvider';
 import Swal from 'sweetalert2';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const CategoriesToy = () => {
     const [activeTab, setActiveTab] = useState("Goal Getter's Paradise")
@@ -47,10 +49,16 @@ const CategoriesToy = () => {
             })
         }
     }
+    useEffect(() => {
+        AOS.init({
+            offset: 150,
+            duration: 1500,
+        });
+    }, [])
 
     return (
         <>
-            <div onClick={handleToyFilterBtn} className='flex gap-1 flex-wrap'>
+            <div onClick={handleToyFilterBtn} className='flex gap-1 flex-wrap' data-aos="fade-left">
                 <button className='py-3 px-6 flex-grow block bg-white bg-p text-white'>Goal Getter's Paradise</button>
                 <button className='py-3 px-6 flex-grow block bg-white'>Cricket Carnival</button>
                 <button className='py-3 px-6 flex-grow block bg-white'>Basketball Toys</button>
@@ -58,7 +66,7 @@ const CategoriesToy = () => {
                 <button className='py-3 px-6 flex-grow block bg-white'>Baseball Toys</button>
                 <button className='py-3 px-6 flex-grow block bg-white'>Golf Toys</button>
             </div>
-            <div className='grid md:grid-cols-3 gap-6 mt-10'>
+            <div className='grid md:grid-cols-3 gap-6 mt-10' data-aos="fade-right">
                 {
                     categoryToy.map(toy => (
                         <div key={toy._id} className='bg-slate-50 rounded-2xl shadow-xl'>

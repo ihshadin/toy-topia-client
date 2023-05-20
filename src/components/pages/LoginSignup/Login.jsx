@@ -3,8 +3,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
 import loginImage from '../../../assets/images/login.png';
 import { AuthContext } from '../../../routes/AuthProvider';
+import useDynamicTitle from '../../../hooks/useDynamicTitle';
 
 const Login = () => {
+    useDynamicTitle()
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
     const { signIn } = useContext(AuthContext);
@@ -60,6 +62,7 @@ const Login = () => {
                 <div className="flex flex-col w-full">
                     <div className="divider"> OR </div>
                 </div>
+                {/* Login with social accounts */}
                 <SocialLogin redirectNavigate={redirectNavigate} />
             </form>
         </div>

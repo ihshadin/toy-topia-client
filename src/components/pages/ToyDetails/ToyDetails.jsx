@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import useDynamicTitle from '../../../hooks/useDynamicTitle';
 
 const ToyDetails = () => {
+    useDynamicTitle();
     const { id } = useParams();
     const [toy, setToy] = useState([]);
     const { toyName, toyPhoto, toyPrice, toyQuantity, toyRating, toyCategory, toyDesc, sellerName, sellerEmail } = toy;

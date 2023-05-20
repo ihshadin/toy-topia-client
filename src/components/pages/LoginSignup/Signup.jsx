@@ -4,8 +4,10 @@ import signUpImage from '../../../assets/images/register.png'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../routes/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import useDynamicTitle from '../../../hooks/useDynamicTitle';
 
 const Signup = () => {
+    useDynamicTitle();
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
     const { createUser } = useContext(AuthContext);
@@ -13,6 +15,7 @@ const Signup = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
 
+    // Registration function
     const handleRegister = (event) => {
         event.preventDefault();
         setError('');
@@ -46,6 +49,7 @@ const Signup = () => {
             })
     }
 
+    // Update user and photo url
     const updateUserData = (loggedUser, userName, photo) => {
         updateProfile(loggedUser, {
             displayName: userName,
@@ -59,6 +63,7 @@ const Signup = () => {
             })
     }
 
+    // Redirect to prvious route
     const redirectNavigate = () => {
         navigate(from, { replace: true })
     }
@@ -94,6 +99,7 @@ const Signup = () => {
                 <div className="flex flex-col w-full">
                     <div className="divider"> OR </div>
                 </div>
+                {/* Login With Social */}
                 <SocialLogin redirectNavigate={redirectNavigate} />
             </form>
         </div>

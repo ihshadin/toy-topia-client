@@ -2,11 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../routes/AuthProvider';
 import Swal from 'sweetalert2';
 import EditToy from '../../shared-comp/EditToy/EditToy';
+import useDynamicTitle from '../../../hooks/useDynamicTitle';
 
 const MyToys = () => {
+    useDynamicTitle();
     const { user } = useContext(AuthContext);
     const [myToys, setMyToys] = useState([]);
 
+    // Dlete button function
     const handleDelete = (id) => {
         Swal.fire({
             title: 'Are you sure?',
