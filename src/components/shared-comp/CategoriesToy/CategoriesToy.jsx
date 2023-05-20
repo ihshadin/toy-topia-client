@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../routes/AuthProvider';
+import Swal from 'sweetalert2';
 
 const CategoriesToy = () => {
     const [activeTab, setActiveTab] = useState("Goal Getter's Paradise")
-    const [categoryToy, setCategoryToy] = useState([])
+    const [categoryToy, setCategoryToy] = useState([]);
+    const { user } = useContext(AuthContext);
+    // const history = useHistory();
 
     const handleToyFilterBtn = e => {
         const btn = e.target;
@@ -28,7 +32,21 @@ const CategoriesToy = () => {
                 setCategoryToy(result)
             })
     }, [activeTab])
-    // console.log(activeTab);
+
+    const handleViewDetailsPage = () => {
+        if (user) {
+            history.push(`/toy/${toy._id}`)
+        } else {
+            Swal.fire({
+                title: 'Error!',
+                text: 'You have to log in first to view details',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            }).then(() => {
+                history.push('/login')
+            })
+        }
+    }
 
     return (
         <>
@@ -51,7 +69,10 @@ const CategoriesToy = () => {
                                     <span className=''>Price: ${toy.toyPrice}</span>
                                     <span className=''>Rating: {toy.toyRating}</span>
                                 </div>
-                                <Link to={`/toy/${toy._id}`} className='bg-p text-white block w-full mt-4 text-center py-3 rounded-full'>View Details</Link>
+                                <Link
+                                    className='bg-p text-white block w-full mt-4 text-center py-3 rounded-full'
+                                    onClick={handleViewDetailsPage}
+                                >View Details</Link>
                             </div>
                         </div>
                     ))

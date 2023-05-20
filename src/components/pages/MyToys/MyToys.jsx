@@ -86,7 +86,6 @@ const MyToys = () => {
     //     }
     // };
 
-    console.log(user?.email);
     useEffect(() => {
         fetch(`http://localhost:5000/my-toys/${user?.email}`)
             .then(res => res.json())

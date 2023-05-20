@@ -27,7 +27,6 @@ const AddNewToy = () => {
             sellerName: user?.displayName,
             sellerEmail: user?.email,
         };
-        console.log(newToy);
 
         fetch('http://localhost:5000/add-toy', {
             method: 'POST',
