@@ -1,14 +1,17 @@
 import React, { useContext, useState } from 'react';
 import SocialLogin from './SocialLogin';
 import signUpImage from '../../../assets/images/register.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../routes/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 
 const Signup = () => {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
-    const { user, createUser } = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -35,6 +38,7 @@ const Signup = () => {
                 console.log(createdUser);
                 updateUserData(createdUser, name, photoLink)
                 setSuccess('Congrates! You are successfully register an Account!')
+                redirectNavigate();
             })
             .catch(error => {
                 setError('Ops! Registration faild. Please try again')
@@ -54,6 +58,12 @@ const Signup = () => {
                 setError(error.message)
             })
     }
+
+    const redirectNavigate = () => {
+        navigate(from, { replace: true })
+    }
+
+
     return (
         <div className='flex xl:container mx-auto justify-between items-center'>
             <div>
@@ -84,7 +94,7 @@ const Signup = () => {
                 <div className="flex flex-col w-full">
                     <div className="divider"> OR </div>
                 </div>
-                <SocialLogin />
+                <SocialLogin redirectNavigate={redirectNavigate} />
             </form>
         </div>
     );

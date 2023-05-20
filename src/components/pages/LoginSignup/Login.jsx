@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
 import loginImage from '../../../assets/images/login.png';
 import { AuthContext } from '../../../routes/AuthProvider';
@@ -8,6 +8,9 @@ const Login = () => {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
     const { signIn } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     // Sign in with email and password
     const handleLogin = event => {
@@ -24,16 +27,16 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 setSuccess('You are successfully loggedin');
-                // redirectNavigate();
+                redirectNavigate();
             })
             .catch(error => {
                 console.log(error);
                 setError("Email or password doesn't match.")
             })
     }
-    // const redirectNavigate = () => {
-    //     navigate(from, { replace: true })
-    // }
+    const redirectNavigate = () => {
+        navigate(from, { replace: true })
+    }
 
     return (
         <div className='flex xl:container mx-auto justify-between items-center'>
@@ -57,7 +60,7 @@ const Login = () => {
                 <div className="flex flex-col w-full">
                     <div className="divider"> OR </div>
                 </div>
-                <SocialLogin setError={setError} setSuccess={setSuccess} />
+                <SocialLogin redirectNavigate={redirectNavigate} />
             </form>
         </div>
     );

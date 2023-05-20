@@ -4,7 +4,7 @@ import githubIcon from '../../../assets/images/25231.png'
 import facebookIcon from '../../../assets/images/2021_Facebook_icon.svg.png'
 import { AuthContext } from '../../../routes/AuthProvider';
 
-const SocialLogin = () => {
+const SocialLogin = ({ redirectNavigate }) => {
     const { googleLogin, githubLogin, facebookLogin } = useContext(AuthContext);
 
     // Google login
@@ -12,7 +12,8 @@ const SocialLogin = () => {
         googleLogin()
             .then(result => {
                 const user = result?.user;
-                console.log(user);
+                // console.log(user);
+                redirectNavigate()
             })
             .catch(error => {
                 const errorMessage = error?.message;
@@ -24,7 +25,8 @@ const SocialLogin = () => {
         githubLogin()
             .then(result => {
                 const user = result?.user;
-                console.log(user);
+                // console.log(user);
+                redirectNavigate()
             })
             .catch(error => {
                 const errorMessage = error?.message;
@@ -36,7 +38,8 @@ const SocialLogin = () => {
         facebookLogin()
             .then(result => {
                 const user = result?.user;
-                console.log(user);
+                // console.log(user);
+                redirectNavigate()
             })
             .catch(error => {
                 const errorMessage = error?.message;

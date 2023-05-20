@@ -128,7 +128,7 @@ const MyToys = () => {
                                         <td>{toy.toyQuantity}</td>
                                         <td>{toy.toyCategory}</td>
                                         <td className='text-center'>
-                                            <label htmlFor={`my-modal-${toy._id}`} className="cursor-pointer text-white px-5 bg-p">Edit</label>
+                                            <label htmlFor={`my-modal-${toy._id}`} className="cursor-pointer text-white px-5 bg-p">Update</label>
                                             <input type="checkbox" id={`my-modal-${toy._id}`} className="modal-toggle" />
                                             <EditToy id={toy._id} toy={toy} handleUpdateToy={handleUpdateToy} />
                                         </td>

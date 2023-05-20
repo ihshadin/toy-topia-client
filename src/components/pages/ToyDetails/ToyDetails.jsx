@@ -23,9 +23,10 @@ const ToyDetails = () => {
                         <span className='block'>Seller Name: {sellerName}</span>
                         <span className='block'>Seller Email: {sellerEmail}</span>
                     </div>
-                    <div className='flex gap-10 mt-5 text-xl text-s'>
-                        <span className=''>Price: ${toyPrice}</span>
-                        <span className=''>Quantity: {toyQuantity}</span>
+                    <div className='mt-5 text-xl text-s'>
+                        <span className='block'>Price: ${toyPrice}</span>
+                        <span className='block'>Quantity: {toyQuantity}</span>
+                        <span className='block'>Rating: {toyRating}</span>
                     </div>
                     <span className='block text-xl mb-5'>Category: <span>{toyCategory}</span></span>
                     <p className='text-gray-500'>{toyDesc}</p>
