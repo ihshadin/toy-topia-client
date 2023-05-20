@@ -9,7 +9,7 @@ const ToyDetails = () => {
     const { toyName, toyPhoto, toyPrice, toyQuantity, toyRating, toyCategory, toyDesc, sellerName, sellerEmail } = toy;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/toy/${id}`)
+        fetch(`https://toy-topia-server-theta.vercel.app/toy/${id}`)
             .then(res => res.json())
             .then(data => {
                 setToy(data);

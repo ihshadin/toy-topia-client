@@ -30,7 +30,7 @@ const AddNewToy = () => {
             sellerEmail: user?.email,
         };
 
-        fetch('http://localhost:5000/add-toy', {
+        fetch('https://toy-topia-server-theta.vercel.app/add-toy', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -20,7 +20,7 @@ const AllToys = () => {
     // Search btn
     const handleSearch = () => {
 
-        fetch(`http://localhost:5000/search/${searchText}`)
+        fetch(`https://toy-topia-server-theta.vercel.app/search/${searchText}`)
             .then(res => res.json())
             .then(data => {
                 setToys(data);
@@ -29,7 +29,7 @@ const AllToys = () => {
 
     // Pagination data
     useEffect(() => {
-        fetch(`http://localhost:5000/all-toys?page=${currentPage}&limit=${itemsPerPage}`)
+        fetch(`https://toy-topia-server-theta.vercel.app/all-toys?page=${currentPage}&limit=${itemsPerPage}`)
             .then(res => res.json())
             .then(result => {
                 // console.log(result);

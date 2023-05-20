@@ -28,7 +28,7 @@ const CategoriesToy = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/all-toys/${activeTab}`)
+        fetch(`https://toy-topia-server-theta.vercel.app/all-toys/${activeTab}`)
             .then(res => res.json())
             .then(result => {
                 setCategoryToy(result)

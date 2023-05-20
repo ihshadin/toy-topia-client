@@ -21,7 +21,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/toys/${id}`, {
+                fetch(`https://toy-topia-server-theta.vercel.app/toys/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -90,7 +90,7 @@ const MyToys = () => {
     // };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/my-toys/${user?.email}`)
+        fetch(`https://toy-topia-server-theta.vercel.app/my-toys/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

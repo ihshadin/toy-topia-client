@@ -21,7 +21,7 @@ const Home = () => {
 
     return (
         <>
-            <section className='banner-toytopia'>
+            <section className='banner-toytopia overflow-hidden'>
                 <div className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto grid items-center grid-cols-1 md:grid-cols-2'>
                     <div className='' data-aos="fade-right" data-aos-anchor-placement="top-bottom">
                         <h4 className='text-xl md:text-2xl font-semibol text-p'>Where Imagination Comes to Life!</h4>
@@ -37,7 +37,7 @@ const Home = () => {
             </section>
 
             {/* Gallery Section */}
-            <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
+            <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto overflow-hidden'>
                 <div className='mb-10'>
                     <h2 className='text-center text-3xl md:text-5xl font-bold' data-aos="zoom-in" data-aos-anchor-placement="top-bottom" >Explore Our Gallery</h2>
                     <p className='w-full md:w-2/4 mt-2 text-center text-zinc-600 text-base mx-auto' data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom" >
@@ -49,7 +49,7 @@ const Home = () => {
             </section>
 
             {/* Shop by category */}
-            <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
+            <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto overflow-hidden'>
                 <div className='mb-12'>
                     <h2 className='text-center text-3xl md:text-5xl font-bold' data-aos="zoom-in" data-aos-anchor-placement="top-bottom">Discover Toy Collections</h2>
                     <p className='w-full md:w-2/4 mt-2 text-center text-zinc-600 text-base mx-auto' data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
@@ -61,7 +61,7 @@ const Home = () => {
             </section>
 
             {/* testimonial section */}
-            <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
+            <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto overflow-hidden'>
                 <div className='mb-12'>
                     <h2 className='text-center text-2xl md:text-5xl font-bold' data-aos="zoom-in" data-aos-anchor-placement="top-bottom">What Our Customers Say</h2>
                     <p className='w-full md:w-2/4 mt-2 text-center text-zinc-600 text-base mx-auto' data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
