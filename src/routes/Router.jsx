@@ -7,6 +7,9 @@ import AllToys from "../components/pages/AllToys/AllToys";
 import MyToys from "../components/pages/MyToys/MyToys";
 import AddNewToy from "../components/pages/AddNewToy/AddNewToy";
 import Blogs from "../components/pages/Blogs/Blogs";
+import ErrorPage from "../components/pages/ErrorPage/ErrorPage";
+import ToyDetails from "../components/pages/ToyDetails/ToyDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +31,11 @@ const router = createBrowserRouter([
             {
                 path: 'all-toys',
                 element: <AllToys />,
+                loader: () => fetch('http://localhost:5000/totalToys'),
+            },
+            {
+                path: 'toy/:id',
+                element: <PrivateRoute><ToyDetails /></PrivateRoute>,
             },
             {
                 path: 'my-toys',
@@ -38,10 +46,14 @@ const router = createBrowserRouter([
                 element: <AddNewToy />,
             },
             {
-                path: 'blogs',
+                path: 'blogss',
                 element: <Blogs />,
             }
         ]
+    },
+    {
+        path: '*',
+        element: <ErrorPage />,
     }
 ])
 export default router;

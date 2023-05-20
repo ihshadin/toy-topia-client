@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../routes/AuthProvider';
 
 const ToyCard = ({ toy }) => {
-    const { toyName, toyPhoto, toyPrice, toyQuantity, toyCategory } = toy;
+    const { _id, toyName, toyPhoto, toyPrice, toyQuantity, toyCategory } = toy;
     const { user } = useContext(AuthContext);
 
     return (
@@ -17,7 +17,7 @@ const ToyCard = ({ toy }) => {
                     <span className=''>Quantity: {toyQuantity}</span>
                 </div>
                 <span className='mr-3 text-lg'>Category: <span>{toyCategory}</span></span>
-                <Link className='bg-p text-white block w-full mt-4 text-center py-3 rounded-full'>View Details</Link>
+                <Link to={`/toy/${_id}`} className='bg-p text-white block w-full mt-4 text-center py-3 rounded-full'>View Details</Link>
             </div>
         </div>
     );

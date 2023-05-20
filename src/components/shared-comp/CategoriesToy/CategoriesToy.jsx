@@ -22,7 +22,7 @@ const CategoriesToy = () => {
     }
 
     useEffect(() => {
-        fetch(`https://toy-topia-server-theta.vercel.app/all-toys/${activeTab}`)
+        fetch(`http://localhost:5000/all-toys/${activeTab}`)
             .then(res => res.json())
             .then(result => {
                 setCategoryToy(result)
@@ -51,7 +51,7 @@ const CategoriesToy = () => {
                                     <span className=''>Price: ${toy.toyPrice}</span>
                                     <span className=''>Rating: {toy.toyRating}</span>
                                 </div>
-                                <Link className='bg-p text-white block w-full mt-4 text-center py-3 rounded-full'>View Details</Link>
+                                <Link to={`/toy/${toy._id}`} className='bg-p text-white block w-full mt-4 text-center py-3 rounded-full'>View Details</Link>
                             </div>
                         </div>
                     ))

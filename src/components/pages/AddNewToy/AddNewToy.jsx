@@ -24,11 +24,12 @@ const AddNewToy = () => {
             toyRating,
             toyCategory,
             toyDesc,
-            userEmail: user?.email
+            sellerName: user?.displayName,
+            sellerEmail: user?.email,
         };
         console.log(newToy);
 
-        fetch('https://toy-topia-server-ihshadin.vercel.app/add-toy', {
+        fetch('http://localhost:5000/add-toy', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
