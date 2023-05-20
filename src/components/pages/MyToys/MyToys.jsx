@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../routes/AuthProvider';
 import Swal from 'sweetalert2';
-import EditToy from '../../shared-comp/EditToy/EditToy';
+import UpdateToy from '../../shared-comp/UpdateToy/UpdateToy';
 import useDynamicTitle from '../../../hooks/useDynamicTitle';
+import { Link } from 'react-router-dom';
 
 const MyToys = () => {
     useDynamicTitle();
@@ -40,54 +41,40 @@ const MyToys = () => {
         })
     }
 
-    const handleUpdateToy = (id) => {
-        const form = e.target;
-        const toyName = form.toy_name.value;
-        const toyPhoto = form.toy_photo.value;
-        const toyPrice = form.toy_price.value;
-        const toyQuantity = form.toy_quantity.value;
-        const toyRating = form.toy_rating.value;
-        const toyCategory = form.toy_cat.value;
-        const toyDesc = form.toy_desc.value;
-        const _id = form.toy_u_id.value;
+    // const handleUpdateToy = (id) => {
+    //     const form = e.target;
+    //     const toyPrice = form.toy_price.value;
+    //     const toyQuantity = form.toy_quantity.value;
+    //     const toyDesc = form.toy_desc.value;
 
-        const updatedToy = {
-            toyName,
-            toyPhoto,
-            toyPrice,
-            toyQuantity,
-            toyRating,
-            toyCategory,
-            toyDesc
-        };
-        console.log(updatedToy);
-        fetch(`http://localhost:5000/update/${_id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updatedToy)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.modifiedCount > 0) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Toy updated successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    })
-                }
-            })
-    }
+    //     const updatedToy = {
+    //         toyPrice,
+    //         toyQuantity,
+    //         toyDesc
+    //     };
+    //     console.log(updatedToy);
 
-    // const handleEditClick = (toyId) => {
-    //     const modalToggle = document.getElementById(`my-modal-${toyId}`);
-    //     if (modalToggle) {
-    //         modalToggle.checked = true;
-    //     }
-    // };
+    //     fetch(`http://localhost:5000/update/${_id}`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(updatedToy)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             if (data.modifiedCount > 0) {
+    //                 Swal.fire({
+    //                     title: 'Success!',
+    //                     text: 'Toy updated successfully',
+    //                     icon: 'success',
+    //                     confirmButtonText: 'Cool'
+    //                 })
+    //             }
+    //         })
+    // }
+
 
     useEffect(() => {
         fetch(`https://toy-topia-server-theta.vercel.app/my-toys/${user?.email}`)
@@ -130,6 +117,21 @@ const MyToys = () => {
                                         <td>{toy.toyQuantity}</td>
                                         <td>{toy.toyCategory}</td>
                                         <td className='text-center'>
+                                            <Link to={`/update-toy/${toy._id}`} className="cursor-pointer text-white px-5 bg-p">Update</Link>
+                                        </td>
+                                        <td className='text-center'><button className='cursor-pointer text-white px-5 bg-p' onClick={() => handleDelete(toy._id)} >Delete</button></td>
+                                    </tr>
+                                ))
+                            }
+                            {/* {
+                                myToys.map((toy, i) => (
+                                    <tr key={i}>
+                                        <th>{i + 1}</th>
+                                        <td>{toy.toyName}</td>
+                                        <td>${toy.toyPrice}</td>
+                                        <td>{toy.toyQuantity}</td>
+                                        <td>{toy.toyCategory}</td>
+                                        <td className='text-center'>
                                             <label htmlFor={`my-modal-${toy._id}`} className="cursor-pointer text-white px-5 bg-p">Update</label>
                                             <input type="checkbox" id={`my-modal-${toy._id}`} className="modal-toggle" />
                                             <EditToy id={toy._id} toy={toy} handleUpdateToy={handleUpdateToy} />
@@ -137,7 +139,7 @@ const MyToys = () => {
                                         <td className='text-center'><button className='cursor-pointer text-white px-5 bg-p' onClick={() => handleDelete(toy._id)} >Delete</button></td>
                                     </tr>
                                 ))
-                            }
+                            } */}
                         </tbody>
                     </table>
                 </div>
