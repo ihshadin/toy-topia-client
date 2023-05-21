@@ -18,7 +18,7 @@ const ToyDetails = () => {
 
     return (
         <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
-            <div className='flex flex-col-reverse items-center gap-10'>
+            <div className='flex flex-col-reverse  gap-10'>
                 <div className='flex-grow'>
                     <h2 className='text-p font-bold text-3xl md:text-5xl'>{toyName}</h2>
                     <div className='text-sm text-s leading-tight font-bold'>
@@ -33,7 +33,7 @@ const ToyDetails = () => {
                     <span className='block text-xl mb-5'>Category: <span>{toyCategory}</span></span>
                     <p className='text-gray-500'>{toyDesc}</p>
                 </div>
-                <img className='w-full md:w-96 rounded-xl' src={toyPhoto} alt="" />
+                <img className='w-full md:w-96 rounded-xl mx-auto' src={toyPhoto} alt="" />
             </div>
         </section>
     );

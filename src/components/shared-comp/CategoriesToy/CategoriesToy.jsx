@@ -27,6 +27,7 @@ const CategoriesToy = () => {
         // console.log(btn);
     }
 
+    // Toys load
     useEffect(() => {
         fetch(`https://toy-topia-server-theta.vercel.app/all-toys/${activeTab}`)
             .then(res => res.json())
@@ -35,9 +36,11 @@ const CategoriesToy = () => {
             })
     }, [activeTab])
 
+    // View Details page condition
     const handleViewDetailsPage = () => {
         if (user) {
-            history.push(`/toy/${toy._id}`)
+            // Navigate to toy details page
+            window.location.href = `/toy/${toy._id}`;
         } else {
             Swal.fire({
                 title: 'Error!',
@@ -45,10 +48,13 @@ const CategoriesToy = () => {
                 icon: 'error',
                 confirmButtonText: 'Ok'
             }).then(() => {
-                history.push('/login')
-            })
+                // Navigate to login page
+                window.location.href = '/login';
+            });
         }
     }
+
+    // AOS package
     useEffect(() => {
         AOS.init({
             offset: 150,
@@ -58,7 +64,7 @@ const CategoriesToy = () => {
 
     return (
         <>
-            <div onClick={handleToyFilterBtn} className='flex gap-1 flex-wrap' data-aos="fade-left">
+            <div onClick={handleToyFilterBtn} className='flex gap-1 flex-wrap overflow-hidden' data-aos="fade-left">
                 <button className='py-3 px-6 flex-grow block bg-white bg-p text-white'>Goal Getter's Paradise</button>
                 <button className='py-3 px-6 flex-grow block bg-white'>Cricket Carnival</button>
                 <button className='py-3 px-6 flex-grow block bg-white'>Basketball Toys</button>
@@ -78,6 +84,7 @@ const CategoriesToy = () => {
                                     <span className=''>Rating: {toy.toyRating}</span>
                                 </div>
                                 <Link
+                                    to={`/toy/${toy._id}`}
                                     className='bg-p text-white block w-full mt-4 text-center py-3 rounded-full'
                                     onClick={handleViewDetailsPage}
                                 >View Details</Link>

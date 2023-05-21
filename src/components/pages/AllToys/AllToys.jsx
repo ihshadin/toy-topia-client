@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ToyCard from '../../shared-comp/ToyCard/ToyCard';
 import { Link, useLoaderData } from 'react-router-dom';
 import useDynamicTitle from '../../../hooks/useDynamicTitle';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../../routes/AuthProvider';
 
 const AllToys = () => {
     useDynamicTitle()
+    const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
     const [searchText, setSearchText] = useState("")
     const { totalToys } = useLoaderData();
@@ -37,6 +40,24 @@ const AllToys = () => {
             })
     }, [currentPage, itemsPerPage])
 
+    // View Details page condition
+    const handleViewDetailsPage = () => {
+        if (user) {
+            // Navigate to toy details page
+            window.location.href = `/toy/${toy._id}`;
+        } else {
+            Swal.fire({
+                title: 'Error!',
+                text: 'You have to log in first to view details',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            }).then(() => {
+                // Navigate to login page
+                window.location.href = '/login';
+            });
+        }
+    }
+
     return (
         <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
             <div className='mb-12'>
@@ -63,7 +84,6 @@ const AllToys = () => {
             {/* Tabular design all Toys */}
             <div className="overflow-x-auto">
                 <table className="table w-full">
-                    {/* head */}
                     <thead>
                         <tr>
                             <th className='bg-p text-white'></th>
@@ -86,7 +106,11 @@ const AllToys = () => {
                                     <td>{toy.toyQuantity}</td>
                                     <td>{toy.toyCategory}</td>
                                     <td className='text-center'>
-                                        <Link to={`/toy/${toy._id}`} className='cursor-pointer text-white px-5 bg-p'>View Details</Link>
+                                        <Link
+                                            to={`/toy/${toy._id}`}
+                                            className='cursor-pointer text-white px-5 bg-p'
+                                            onClick={handleViewDetailsPage}
+                                        >View Details</Link>
                                     </td>
                                 </tr>
                             ))

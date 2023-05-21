@@ -25,7 +25,7 @@ const Home = () => {
                 <div className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto grid items-center grid-cols-1 md:grid-cols-2'>
                     <div className='' data-aos="fade-right" data-aos-anchor-placement="top-bottom">
                         <h4 className='text-xl md:text-2xl font-semibol text-p'>Where Imagination Comes to Life!</h4>
-                        <h2 className='text-2xl md:text-4xl uppercase font-bold text-white'>Welcome to Toytopia <br /> A Wonderland of Fun and Adventure</h2>
+                        <h2 className='text-2xl md:text-4xl uppercase font-bold text-white'>Unleash the power of play with sports toys</h2>
                         <p className='w-full mt-4 text-zinc-200 text-base'>
                             Step into Toytopia, where dreams take flight and playtime knows no bounds. Discover an enchanting collection of toys that inspire creativity, ignite laughter, and create cherished memories that will last a lifetime. Come, let the magic begin!
                         </p>
@@ -49,7 +49,7 @@ const Home = () => {
             </section>
 
             {/* Shop by category */}
-            <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto overflow-hidden'>
+            <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
                 <div className='mb-12'>
                     <h2 className='text-center text-3xl md:text-5xl font-bold' data-aos="zoom-in" data-aos-anchor-placement="top-bottom">Discover Toy Collections</h2>
                     <p className='w-full md:w-2/4 mt-2 text-center text-zinc-600 text-base mx-auto' data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
