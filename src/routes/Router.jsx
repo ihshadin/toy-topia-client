@@ -46,7 +46,7 @@ const router = createBrowserRouter([
             {
                 path: 'update-toy/:id',
                 element: <UpdateToy />,
-                loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`)
+                loader: ({ params }) => fetch(`https://toy-topia-server-theta.vercel.app/toy/${params.id}`)
             },
             {
                 path: 'add-toy',

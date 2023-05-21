@@ -53,7 +53,7 @@ const MyToys = () => {
         setSortType(isAscending ? 'descending' : 'ascending');
 
         // Fetch data
-        fetch(`http://localhost:5000/my-toys/${user?.email}?sort=${sortType}`)
+        fetch(`https://toy-topia-server-theta.vercel.app/my-toys/${user?.email}?sort=${sortType}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(sortType, data);
