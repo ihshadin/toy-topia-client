@@ -2,12 +2,14 @@ import React from 'react';
 import useDynamicTitle from '../../../hooks/useDynamicTitle';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const UpdateToy = () => {
-    useDynamicTitle()
+    // useDynamicTitle()
     const { id } = useParams();
     const toy = useLoaderData();
     const { toyPrice, toyQuantity, toyDesc } = toy;
+    const pageTitle = `ToyTopia | Updating the ${toy.toyName}`
 
     const handleUpdateToy = (e) => {
         e.preventDefault();
@@ -47,6 +49,9 @@ const UpdateToy = () => {
 
     return (
         <>
+            <Helmet>
+                <title>{pageTitle}</title>
+            </Helmet>
             <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
                 <div>
                     <h2 className='text-center text-2xl md:text-5xl font-bold mb-7 md:mb-10'>Update the Toy</h2>
