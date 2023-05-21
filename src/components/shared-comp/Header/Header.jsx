@@ -37,7 +37,7 @@ const Header = () => {
             user && <span className='cursor-pointer hover:text-[#1B9C85]' onClick={handleLogOut}>Logout</span>
         }
         {
-            user ? <img className='w-8 h-8 object-cover rounded-full cursor-pointer' title={user.displayName} src={user.photoURL || 'https://media.licdn.com/dms/image/C5603AQEyNKnirxXA5w/profile-displayphoto-shrink_800_800/0/1632428106559?e=2147483647&v=beta&t=C2zGNkOkQTs6_ZkL3Sq22-KELUUGw9N9FlLSObMPfos'} alt="" />
+            user ? <img className='w-8 h-8 object-cover rounded-full cursor-pointer' title={user.displayName || "Please Refresh the page to see your name"} src={user.photoURL || 'https://img.freepik.com/free-icon/user_318-159711.jpg'} alt="" />
                 : <>
                     <NavLink to='/login' className={({ isActive }) => isActive ? "text-p" : "" + `hover:text-[#1B9C85]`}>Sign In</NavLink>
                     <NavLink to='/register' className={({ isActive }) => isActive ? "text-p" : "" + `hover:text-[#1b9c85]`}>Sign Up</NavLink>

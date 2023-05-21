@@ -41,7 +41,7 @@ const Signup = () => {
                 console.log(createdUser);
                 updateUserData(createdUser, name, photoLink)
                 setSuccess('Congrates! You are successfully register an Account!')
-                redirectNavigate();
+                // redirectNavigate();
             })
             .catch(error => {
                 setError('Ops! Registration faild. Please try again')
