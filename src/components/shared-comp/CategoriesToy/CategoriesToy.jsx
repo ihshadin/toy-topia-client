@@ -4,6 +4,8 @@ import { AuthContext } from '../../../routes/AuthProvider';
 import Swal from 'sweetalert2';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css'
 
 const CategoriesToy = () => {
     const [activeTab, setActiveTab] = useState("Goal Getter's Paradise")
@@ -81,7 +83,16 @@ const CategoriesToy = () => {
                                 <h3 className='text-2xl font-bold leading-5 text-p'>{toy.toyName}</h3>
                                 <div className='flex gap-4 mt-5 text-s'>
                                     <span className=''>Price: ${toy.toyPrice}</span>
-                                    <span className=''>Rating: {toy.toyRating}</span>
+                                    <span className='flex items-center gap-1'>
+                                        Rating:
+                                        <Rating
+                                            style={{ maxWidth: 100, marginBottom: '2px' }}
+                                            readOnly
+                                            orientation="horizontal"
+                                            value={toy.toyRating}
+                                        />
+                                        {toy.toyRating}
+                                    </span>
                                 </div>
                                 <Link
                                     to={`/toy/${toy._id}`}

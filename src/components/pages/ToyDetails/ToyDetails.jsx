@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useDynamicTitle from '../../../hooks/useDynamicTitle';
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 
 const ToyDetails = () => {
     useDynamicTitle();
@@ -25,12 +27,21 @@ const ToyDetails = () => {
                         <span className='block'>Seller Name: {sellerName}</span>
                         <span className='block'>Seller Email: {sellerEmail}</span>
                     </div>
-                    <div className='mt-5 text-xl text-s'>
+                    <div className='my-7 text-xl text-s'>
                         <span className='block'>Price: ${toyPrice}</span>
                         <span className='block'>Quantity: {toyQuantity}</span>
-                        <span className='block'>Rating: {toyRating}</span>
+                        <span className='block '>Category: <span>{toyCategory}</span></span>
+                        <span className='flex text-2xl font-bold items-center gap-3'>
+                            Rating:
+                            <Rating
+                                style={{ maxWidth: 150, marginBottom: '5px' }}
+                                readOnly
+                                orientation="horizontal"
+                                value={toyRating}
+                            />
+                            {toyRating}
+                        </span>
                     </div>
-                    <span className='block text-xl mb-5'>Category: <span>{toyCategory}</span></span>
                     <p className='text-gray-500'>{toyDesc}</p>
                 </div>
                 <img className='w-full md:w-96 rounded-xl mx-auto' src={toyPhoto} alt="" />
