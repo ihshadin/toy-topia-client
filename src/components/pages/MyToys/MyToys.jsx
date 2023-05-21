@@ -8,6 +8,8 @@ const MyToys = () => {
     useDynamicTitle();
     const { user } = useContext(AuthContext);
     const [myToys, setMyToys] = useState([]);
+    const [isAscending, setIsAscending] = useState(true);
+    let sortType = 'ascending'
 
     // Delete button function
     const handleDelete = (id) => {
@@ -40,8 +42,16 @@ const MyToys = () => {
         })
     }
 
+    // Sort Active Button
+    const handleSortBtn = (isAsc) => {
+        setIsAscending(isAsc);
+        if (!isAscending) {
+            sortType = 'descending';
+        }
+    }
+
     useEffect(() => {
-        fetch(`https://toy-topia-server-theta.vercel.app/my-toys/${user?.email}`)
+        fetch(`https://toy-topia-server-theta.vercel.app/my-toys/${user?.email}?sort=${sortType}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -53,8 +63,13 @@ const MyToys = () => {
 
     return (
         <section className='px-3 py-14 md:py-24 xl:px-0 xl:container mx-auto'>
-            <div className='mb-12'>
-                <h2 className='text-2xl md:text-4xl font-bold text-center'>My Toys</h2>
+            <div className='mb-5'>
+                <h2 className='text-2xl md:text-4xl font-bold text-center text-s'>My Toys</h2>
+                <p className='text-center text-xl text-gray-600'>{isAscending ? 'Explore Toys with Ascending Price Order' : 'Explore Toys with Descending Price Order'}</p>
+            </div>
+            <div className='flex gap-2 justify-center md:justify-start mb-5'>
+                <button className={`md:w-auto px-9 md:px-12 py-3 text-white font-semibold uppercase ${isAscending ? 'bg-s' : 'bg-p'}`} onClick={() => handleSortBtn(true)}>Ascending</button>
+                <button className={`md:w-auto px-9 md:px-12 py-3 text-white font-semibold uppercase ${isAscending ? 'bg-p' : 'bg-s'}`} onClick={() => handleSortBtn(false)}>Descending</button>
             </div>
             <div className=''>
                 <div className="overflow-x-auto">
