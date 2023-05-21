@@ -9,7 +9,7 @@ const MyToys = () => {
     const { user } = useContext(AuthContext);
     const [myToys, setMyToys] = useState([]);
     const [isAscending, setIsAscending] = useState(true);
-    let sortType = 'ascending'
+    const [sortType, setSortType] = useState('ascending')
 
     // Delete button function
     const handleDelete = (id) => {
@@ -42,22 +42,24 @@ const MyToys = () => {
         })
     }
 
-    // Sort Active Button
     const handleSortBtn = (isAsc) => {
         setIsAscending(isAsc);
-        if (!isAscending) {
-            sortType = 'descending';
-        }
     }
 
+    // console.log(isAscending, sortType);
+
     useEffect(() => {
-        fetch(`https://toy-topia-server-theta.vercel.app/my-toys/${user?.email}?sort=${sortType}`)
+        // Update sortType
+        setSortType(isAscending ? 'descending' : 'ascending');
+
+        // Fetch data
+        fetch(`http://localhost:5000/my-toys/${user?.email}?sort=${sortType}`)
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
+                // console.log(sortType, data);
                 setMyToys(data);
             })
-    }, [])
+    }, [isAscending])
 
 
 

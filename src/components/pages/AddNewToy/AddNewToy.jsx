@@ -12,9 +12,9 @@ const AddNewToy = () => {
         const form = e.target;
         const toyName = form.toy_name.value;
         const toyPhoto = form.toy_photo.value;
-        const toyPrice = form.toy_price.value;
-        const toyQuantity = form.toy_quantity.value;
-        const toyRating = form.toy_rating.value;
+        const toyPrice = parseFloat(form.toy_price.value);
+        const toyQuantity = parseInt(form.toy_quantity.value);
+        const toyRating = parseFloat(parseFloat(form.toy_rating.value).toFixed(1));
         const toyCategory = form.toy_cat.value;
         const toyDesc = form.toy_desc.value;
 

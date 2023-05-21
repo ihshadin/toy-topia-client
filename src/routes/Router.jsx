@@ -16,6 +16,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayouts />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -56,10 +57,6 @@ const router = createBrowserRouter([
                 element: <Blogs />,
             }
         ]
-    },
-    {
-        path: '*',
-        element: <ErrorPage />,
     }
 ])
 export default router;
