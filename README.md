@@ -10,12 +10,22 @@
 - User can create account by Google, Github, Facebook
 - also this website is reponsive speacily home page
 <br/>
-<br/>
 
- [Live Link](https://toytopia-12211.web.app)
+# Used Packages/Tecknology Name
+- HTML
+- CSS3
+- TailwindCSS
+- DaisyUI
+- React
+- MongoDB
+- Express
+- Firebase
+- Sweetalert
+- AOS Package
+- Helmet
+- React Icons and more
+
+
+ [Live Link](https://toytopia-12211.firebaseapp.com/)
 
 **`https://toytopia-12211.web.app/`**
-
-https://toytopia-12211.web.app/
-
-https://toytopia-12211.firebaseapp.com/
